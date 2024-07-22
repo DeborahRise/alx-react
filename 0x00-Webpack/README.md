@@ -10,3 +10,5 @@ Entry points, output, and loaders
 How to add plugins
 How to split your code into chunks
 How to setup a dev server
+
+Let's make magic
