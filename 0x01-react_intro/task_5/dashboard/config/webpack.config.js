@@ -50,5 +50,5 @@ module.exports = {
       inject: false,
       template: "./dist/index.html",
     }),
-  ],
+],
 };
