@@ -23,9 +23,6 @@
       "react-app/jest"
     ]
   },
-  "jest": {
-    "setupFilesAfterEnv": ["~/alx-react/0x01-react_intro/task_3/dashboards/src/setupTests.js"]
-  },
   "browserslist": {
     "production": [
       ">0.2%",
