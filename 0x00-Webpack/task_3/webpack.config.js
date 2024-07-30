@@ -3,6 +3,7 @@ const path = require("path");
 const { splitChunks } = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { stat } = require("fs");
 
 module.exports = {
   mode: "development",
@@ -37,7 +38,9 @@ module.exports = {
     ],
   },
   devServer: {
-    contentBase: path.join(__dirname, "./public"),
+    static: {
+      directory: path.join(__dirname, "./public"),
+    },
     port: 8564,
     open: true,
   },
@@ -45,12 +48,15 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'index.html'),
+      template: path.resolve(__dirname, './public/index.html'),
     }),
   ],
   optimization: {
     splitChunks: {
       chunks: 'all', //this enables code splitting for all chunks
     },
+  },
+  stats: {
+    children: true,
   },
 };
