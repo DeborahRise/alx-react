@@ -46,7 +46,9 @@ module.exports = {
   },
   devtool: 'inline-source-map', //this line enables inline source maps
   plugins: [
-    new CleanWebpackPlugin(),
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: ['**/*', '!index.html'],
+    }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './public/index.html'),
     }),
