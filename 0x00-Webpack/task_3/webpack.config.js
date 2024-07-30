@@ -8,12 +8,12 @@ module.exports = {
   mode: "development",
   entry: {
     header: path.resolve(__dirname, '.modules/header/header.js'),
-    body: path.resolve(__dirname, './body/body.js'),
-    footer: path.resolve(__dirname, './footer/footer.js')
+    body: path.resolve(__dirname, '.modules/body/body.js'),
+    footer: path.resolve(__dirname, '.modules/footer/footer.js')
   },
   output: {
     path: path.resolve(__dirname, "public"),
-    filename: "bundle.js",
+    filename: "[name]bundle.js",
   },
   module: {
     rules: [
@@ -37,7 +37,7 @@ module.exports = {
     ],
   },
   devServer: {
-    contentBase: path.resolve(__dirname, "public"),
+    contentBase: path.resolve(__dirname, "./public"),
     port: 8564,
     open: true,
   },
