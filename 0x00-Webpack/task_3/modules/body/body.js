@@ -1,13 +1,17 @@
-import $ from 'jquery';
-import _ from 'lodash';
-import './body.css';
+import "./body.css";
+const $ = require("jquery");
+const _ = require("lodash");
 
-$(document).ready(function() {
-  $('body').append('<button>Click me</button>');
-  $('body').append('<p>0</p>');
+$("body").append("<button>Click here to get started</button>");
+$("body").append('<p id="count"><p>');
 
-  $('button').on('click', _.debounce(function() {
-    let count = parseInt($('p').text());
-    $('p').text(count + 1);
-  }, 300));
-});
+const updateCounter = () => {
+  let times = $("#count").html() || 0;
+  $("button").on("click", () => {
+    times++;
+    $("#count").html(`${times} clicks on the button`);
+  });
+};
+
+_.debounce(updateCounter, 500);
+updateCounter();
