@@ -13,7 +13,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "public"),
-    filename: "[name]bundle.js",
+    filename: "[name].bundle.js",
   },
   module: {
     rules: [
@@ -37,7 +37,7 @@ module.exports = {
     ],
   },
   devServer: {
-    contentBase: path.resolve(__dirname, "./public"),
+    contentBase: path.join(__dirname, "./public"),
     port: 8564,
     open: true,
   },
