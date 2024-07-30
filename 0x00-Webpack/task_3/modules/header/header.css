@@ -1,0 +1,14 @@
+header {
+    background-color: #f3f3f3;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  header img {
+    width: 50px;
+  }
+  
+  header h1 {
+    font-size: 24px;
+  }
+  
