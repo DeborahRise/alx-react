@@ -4,6 +4,9 @@ module.exports = {
   mode: "development",
   entry: {
     main: path.resolve(__dirname, "./js/dashboard_main.js"),
+    header: path.resolve(__dirname, './header/header.js'),
+    body: path.resolve(__dirname, './body/body.js'),
+    footer: path.resolve(__dirname, './footer/footer.js')
   },
   output: {
     path: path.resolve(__dirname, "public"),
