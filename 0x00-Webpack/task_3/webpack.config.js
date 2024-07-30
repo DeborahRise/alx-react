@@ -41,7 +41,7 @@ module.exports = {
     port: 8564,
     open: true,
   },
-  devtools: 'inline-source-map', //this line enables inline source maps
+  devtool: 'inline-source-map', //this line enables inline source maps
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
