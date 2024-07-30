@@ -7,9 +7,9 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
   mode: "development",
   entry: {
-    header: path.resolve(__dirname, '.modules/header/header.js'),
-    body: path.resolve(__dirname, '.modules/body/body.js'),
-    footer: path.resolve(__dirname, '.modules/footer/footer.js')
+    header: path.resolve(__dirname, './modules/header/header.js'),
+    body: path.resolve(__dirname, './modules/body/body.js'),
+    footer: path.resolve(__dirname, './modules/footer/footer.js')
   },
   output: {
     path: path.resolve(__dirname, "public"),
