@@ -11,7 +11,7 @@ describe('Testing the CourseListRow component', () => {
     it('renders one cell with colspan = 2, when isHeader is true and textSecondCell is null', () => {
         const component = shallow(<CourseListRow isHeader={true} textFirstCell="something" textSecondCell={null} />)
         expect(component.find("tr").children()).toHaveLength(1);
-        expect(component.find("tr").childAt(0).html).toEqual('<th colSpan="2">something</th>');
+        expect(component.find("tr").childAt(0).html()).toEqual('<th colSpan="2">something</th>');
     });
     it("renders two cells when isHeader is true and textSecondCell is present", () => {
         const component = shallow(
