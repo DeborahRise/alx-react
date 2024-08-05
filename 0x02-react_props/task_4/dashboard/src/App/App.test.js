@@ -1,9 +1,10 @@
 import React from 'react';
 import App from './App';
-import Login from './Login/Login';
-import Header from './Header/Header';
-import Footer from './Footer/Footer';
-import Notifications from './Notifications/Notifications';
+import Login from '../Login/Login';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+import Notifications from '../Notifications/Notifications';
+import CourseList from '../CourseList/CourseList';
 import { shallow } from 'enzyme';
 
 
@@ -32,5 +33,21 @@ describe("App tests", () => {
     const component = shallow(<App />);
 
     expect(component.contains(<Footer />)).toBe(true);
+  });
+  it("check that CourseList is not displayed when not logged in", () => {
+    const component = shallow(<App isLoggedIn={false} />);
+    expect(component.find(CourseList).exists()).toBe(false);
+  });
+
+  describe("when isLoggedIn is true", () => {
+    it("does not render Login component", () => {
+      const component = shallow(<App isLoggedIn={true} />);
+      expect(component.find(Login).exists()).toBe(false);
+    });
+
+    it("renders CourseList component", () => {
+      const component = shallow(<App isLoggedIn={true} />);
+      expect(component.find(CourseList).exists()).toBe(true);
+    });
   });
 });
