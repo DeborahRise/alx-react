@@ -2,6 +2,9 @@ import React from 'react';
 import './Notifications.css';
 import close_icon from './close-icon.png';
 import { getLatestNotification } from '../utils';
+import NotificationItem from './NotificationItem';
+
+
 const Notifications = () => {
   return (
     <div className='Notifications'>
