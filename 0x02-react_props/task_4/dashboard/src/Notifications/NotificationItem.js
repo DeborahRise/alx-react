@@ -8,7 +8,7 @@ const NotificationItem = ({ type, html, value}) => {
   return <li data-notification-type={type}>{value}</li>;
 };
 
-NotificationItem.PropTypes = {
+NotificationItem.propTypes = {
   html: PropTypes.shape({
     __html: PropTypes.string.isRequired,
   }),
