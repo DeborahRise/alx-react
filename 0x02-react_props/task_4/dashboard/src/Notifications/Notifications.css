@@ -5,7 +5,9 @@
     top: 10px;
     width: 95vw;
   }
-  
+  .menuItem {
+    text-align: right;
+  }
   li[data-priority="default"] {
     color: blue;
   }

@@ -3,6 +3,7 @@ import { shallow } from "enzyme";
 import Notifications from "./Notifications";
 import NotificationItem from "./NotificationItem";
 
+
 describe("Notification component tests", () => {
   it("renders Notification component without crashing", () => {
     const notification = shallow(<Notifications />);
