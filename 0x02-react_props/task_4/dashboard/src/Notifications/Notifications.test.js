@@ -33,4 +33,21 @@ describe("Notification component tests", () => {
     expect(firstNotificationItem.html()).toContain("data-notification-type=\"default\"");
     expect(firstNotificationItem.html()).toContain("New course available");
   });
+
+  it("checks that the menu item is being displayed when displayDrawer is false", () => {
+    const component = shallow(<Notifications displayDrawer={false} />);
+    expect(component.find('.menuItem').exists()).toBe(true);
+  });
+  it("check that the div.Notifications is not being displayed when displayDrawer is false", () => {
+    const component = shallow(<Notifications displayDrawer={false} />);
+    expect(component.find('.Notifications').exists()).toBe(false);
+  });
+  it("checks that the menu item is being displayed when displayDrawer is true", () => {
+    const component = shallow(<Notifications displayDrawer={true} />);
+    expect(component.find('.menuItem').exists()).toBe(true);
+  });
+  it("check that the div.Notifications is being displayed when displayDrawer is false", () => {
+    const component = shallow(<Notifications displayDrawer={false} />);
+    expect(component.find('.Notifications').exists()).toBe(true);
+  });
 });
