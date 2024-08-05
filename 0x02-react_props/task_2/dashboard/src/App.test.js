@@ -1,9 +1,36 @@
-// task_2/dashboard/src/App.test.js
-import { render, screen } from '@testing-library/react';
+import React from 'react';
 import App from './App';
+import Login from './Login/Login';
+import Header from './Header/Header';
+import Footer from './Footer/Footer';
+import Notifications from './Notifications/Notifications';
+import { shallow } from 'enzyme';
 
-test('renders School dashboard heading', () => {
-  render(<App />);
-  // const headingElement = screen.getByText(/School dashboard/i);
-  // expect(headingElement).toBeInTheDocument();
+
+describe("App tests", () => {
+  it("renders without crashing", () => {
+    const component = shallow(<App />);
+
+    expect(component).toBeDefined();
+  });
+  it("should render Notifications component", () => {
+    const component = shallow(<App />);
+
+    expect(component.contains(<Notifications />)).toBe(true);
+  });
+  it("should render Header component", () => {
+    const component = shallow(<App />);
+
+    expect(component.contains(<Header />)).toBe(true);
+  });
+  it("should render Login Component", () => {
+    const component = shallow(<App />);
+
+    expect(component.contains(<Login />)).toBe(true);
+  });
+  it("should render Footer component", () => {
+    const component = shallow(<App />);
+
+    expect(component.contains(<Footer />)).toBe(true);
+  });
 });
