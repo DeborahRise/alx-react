@@ -9,13 +9,15 @@ const NotificationItem = ({ type, html, value}) => {
 };
 
 NotificationItem.PropTypes = {
-  html: PropTypes.__html,
+  html: PropTypes.shape({
+    __html: PropTypes.string.isRequired,
+  }),
   value: PropTypes.string,
   type: PropTypes.string.isRequired
 }
 
 NotificationItem.defaultProps = {
   type: 'default',
-  value: string
+  value: '',
 }
 export default NotificationItem
