@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { func } from 'prop-types';
 import './App.css';
 import Login from '../Login/Login';
 import Header from '../Header/Header';
@@ -32,9 +32,28 @@ import CourseList from '../CourseList/CourseList'
   ];
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener('keydown', this.handleKeyDown);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.handleKeyDown);
+  }
+
+  handleKeyDown(event) {
+    const { logOut } = this.props;
+    if (event.ctrlKey && event.key=== 'h') {
+      alert('Logging you Out');
+      logOut();
+    }
+  }
   render() {
 
-  const { isLoggedIn } = this.props;
+  const { isLoggedIn, logOut } = this.props;
   return (
     <>
     <Notifications displayDrawer={false} listNotifications={listNotifications} />
@@ -49,9 +68,11 @@ class App extends React.Component {
 }
 App.PropTypes = {
   isLoggedIn: PropTypes.bool,
+  logOut: PropTypes.func,
 };
 
 App.defaultProps = {
-  isLoggedIn: false
+  isLoggedIn: false,
+  logOut: () => {},
 };
 export default App;
