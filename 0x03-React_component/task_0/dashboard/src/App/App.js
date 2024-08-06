@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './App.css';
 import Login from '../Login/Login';
@@ -31,8 +31,10 @@ import CourseList from '../CourseList/CourseList'
     { id: 3, type: 'urgent', html: { __html: getLatestNotification() } }
   ];
 
-function App({ isLoggedIn}) {
+class App extends Component {
+  render() {
 
+  const { isLoggedIn } = this.props;
   return (
     <>
     <Notifications displayDrawer={false} listNotifications={listNotifications} />
@@ -44,7 +46,7 @@ function App({ isLoggedIn}) {
     </>
   );
 }
-
+}
 App.PropTypes = {
   isLoggedIn: PropTypes.bool,
 };
