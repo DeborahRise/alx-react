@@ -31,7 +31,7 @@ import CourseList from '../CourseList/CourseList'
     { id: 3, type: 'urgent', html: { __html: getLatestNotification() } }
   ];
 
-class App extends Component {
+class App extends React.Component {
   render() {
 
   const { isLoggedIn } = this.props;
