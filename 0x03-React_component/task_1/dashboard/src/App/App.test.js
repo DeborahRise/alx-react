@@ -7,6 +7,28 @@ import Notifications from '../Notifications/Notifications';
 import CourseList from '../CourseList/CourseList';
 import { shallow } from 'enzyme';
 
+describe('App component tests', () => {
+  let alertMock;
+
+  beforeEach(() => {
+    alertMock = jest.spyOn(window, 'alert').mockImplementation(() => {});
+  });
+
+  afterEach(() => {
+    alertMock.mockRestore();
+  });
+
+  it('calls logOut and displays alert when ctrl+h is pressed', () => {
+    const logOutMock = jest.fn();
+    const wrapper = shallow(<App isLoggedIn={true} logOut={logOutMock} />);
+
+    const event = new KeyboardEvent('keydown', { key: 'h', ctrlKey: true });
+    window.dispatchEvent(event);
+
+    expect(alertMock).toHaveBeenCalledWith('Logging you out');
+    expect(logOutMock).toHaveBeenCalled();
+  });
+});
 
 describe("App tests", () => {
   it("renders without crashing", () => {

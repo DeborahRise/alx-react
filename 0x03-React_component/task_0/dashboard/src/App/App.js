@@ -56,7 +56,6 @@ class App extends React.Component {
   const { isLoggedIn, logOut } = this.props;
   return (
     <>
-    
     <Notifications displayDrawer={false} listNotifications={listNotifications} />
     <div className="App">
       <Header />
