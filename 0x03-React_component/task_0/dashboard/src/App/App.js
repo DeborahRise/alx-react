@@ -53,7 +53,7 @@ class App extends React.Component {
   }
   render() {
 
-  const { isLoggedIn, logOut } = this.props;
+  // const { isLoggedIn, logOut } = this.props;
   return (
     <>
     <Notifications displayDrawer={false} listNotifications={listNotifications} />
