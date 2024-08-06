@@ -8,7 +8,7 @@ describe("Notification component tests", () => {
   it("renders Notification component without crashing", () => {
     const notification = shallow(<Notifications />);
 
-    expect(notification).toBeDefined();
+    expect(notification.exists).toBe(true);
   });
 
   it("renders ul", () => {
@@ -50,5 +50,25 @@ describe("Notification component tests", () => {
   it("check that the div.Notifications is being displayed when displayDrawer is false", () => {
     const component = shallow(<Notifications displayDrawer={false} />);
     expect(component.find('.Notifications').exists()).toBe(true);
+  });
+
+  it('renders correct number of NotificationItem components', () => {
+    const listNotifications = [
+      { id: 1, type: 'default', value: 'New course available' },
+      { id: 2, type: 'urgent', value: 'New resume available' },
+      { id: 3, type: 'urgent', html: { __html: '<p>test</p>' } }
+    ];
+    const wrapper = shallow(<Notifications displayDrawer={true} listNotifications={listNotifications} />);
+    expect(wrapper.find(NotificationItem)).toHaveLength(3);
+  });
+
+  it('renders correctly when listNotifications is empty or not passed', () => {
+    let wrapper = shallow(<Notifications displayDrawer={true} listNotifications={[]} />);
+    expect(wrapper.find(NotificationItem)).toHaveLength(1);
+    expect(wrapper.find(NotificationItem).prop('value')).toBe('No new notification for now');
+
+    wrapper = shallow(<Notifications displayDrawer={true} />);
+    expect(wrapper.find(NotificationItem)).toHaveLength(1);
+    expect(wrapper.find(NotificationItem).prop('value')).toBe('No new notification for now');
   });
 });
