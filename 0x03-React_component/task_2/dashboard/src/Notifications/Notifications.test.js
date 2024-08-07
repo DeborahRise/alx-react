@@ -71,4 +71,13 @@ describe("Notification component tests", () => {
     expect(wrapper.find(NotificationItem)).toHaveLength(1);
     expect(wrapper.find(NotificationItem).prop('value')).toBe('No new notification for now');
   });
+
+  it('calls markAsRead with correct ID', () => {
+    const component = shallow(<Notifications displayDrawer={true} />);
+    const anInstance = component.instance();
+    anInstance.markAsRead(1);
+    expect(ConsoleSpy).toBe('Notification 1 has been marked as read');
+  });
+
+
 });
