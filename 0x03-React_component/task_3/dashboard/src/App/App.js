@@ -9,6 +9,7 @@ import CourseList from '../CourseList/CourseList'
 import { getLatestNotification } from '../utils';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 import BodySection from '../BodySection/BodySection';
+
   const listCourses = [
     {
       id: 1,
