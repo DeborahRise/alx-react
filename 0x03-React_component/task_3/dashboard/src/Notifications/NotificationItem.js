@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 
 const NotificationItem = ({ type, html, value, markAsRead, id }) => {
   if (html) {
-    return <li data-notification-type={type} dangerouslySetInnerHTML={{ __html: html }} onClick={() => markAsRead(id)}></li>;
+    return <li data-notification-type={type}
+    dangerouslySetInnerHTML={html ? { __html: html.__html } : undefined}
+    onClick={() => markAsRead(id)}></li>;
   }
   return <li data-notification-type={type} onClick={() => markAsRead(id)}>{value}</li>;
 };
