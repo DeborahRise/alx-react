@@ -1,11 +1,11 @@
-import React from 'react'
-import PropTypes, { string } from 'prop-types';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const NotificationItem = ({ type, html, value}) => {
+const NotificationItem = ({ type, html, value, markAsRead, id }) => {
   if (html) {
-    return <li data-notification-type={type} dangerouslySetInnerHTML={{ __html: html }}></li>;
+    return <li data-notification-type={type} dangerouslySetInnerHTML={{ __html: html }} onClick={() => markAsRead(id)}></li>;
   }
-  return <li data-notification-type={type}>{value}</li>;
+  return <li data-notification-type={type} onClick={() => markAsRead(id)}>{value}</li>;
 };
 
 NotificationItem.propTypes = {
@@ -13,11 +13,14 @@ NotificationItem.propTypes = {
     __html: PropTypes.string.isRequired,
   }),
   value: PropTypes.string,
-  type: PropTypes.string.isRequired
-}
+  type: PropTypes.string.isRequired,
+  markAsRead: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired
+};
 
 NotificationItem.defaultProps = {
   type: 'default',
   value: '',
-}
-export default NotificationItem
+};
+
+export default NotificationItem;
