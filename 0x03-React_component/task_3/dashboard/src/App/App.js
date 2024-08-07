@@ -7,7 +7,8 @@ import Footer from '../Footer/Footer';
 import Notifications from '../Notifications/Notifications';
 import CourseList from '../CourseList/CourseList'
 import { getLatestNotification } from '../utils';
-
+import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
+import BodySection from '../BodySection/BodySection';
   const listCourses = [
     {
       id: 1,
@@ -60,7 +61,14 @@ class App extends React.Component {
     <Notifications displayDrawer={true} listNotifications={listNotifications} />
     <div className="App">
       <Header />
-      {isLoggedIn ? <CourseList listCourses={listCourses}/> : <Login />}
+      {isLoggedIn ? (
+        <BodySectionWithMarginBottom title="Course list"> <CourseList listCourses={listCourses}/> </BodySectionWithMarginBottom>
+      ) : (
+        <BodySectionWithMarginBottom title="Log in to continue"> <Login /> </BodySectionWithMarginBottom>
+      ) }
+       <BodySection title="News from the School">
+              <p>Here is some random text for the news section of the school.</p>
+        </BodySection>
       <Footer />
     </div>
     </>
@@ -70,10 +78,27 @@ class App extends React.Component {
 App.propTypes = {
   isLoggedIn: PropTypes.bool,
   logOut: PropTypes.func,
+  listCourses: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      credit: PropTypes.number.isRequired,
+    })
+  ),
+  listNotifications: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      type: PropTypes.string.isRequired,
+      value: PropTypes.string,
+      html: PropTypes.shape({
+        __html: PropTypes.string,
+      }),
+    })
+  ),
 };
 
 App.defaultProps = {
-  isLoggedIn: false,
+  isLoggedIn: true,
   logOut: () => {},
 };
 export default App;

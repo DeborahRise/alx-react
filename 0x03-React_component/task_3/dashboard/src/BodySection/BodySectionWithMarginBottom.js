@@ -12,7 +12,7 @@ const BodySectionWithMarginBottom = (props) => {
   )
 }
 
-BodySectionWithMarginBottom.PropTypes = {
+BodySectionWithMarginBottom.propTypes = {
     title: PropTypes.string.isRequired,
     Children: PropTypes.node,
 }

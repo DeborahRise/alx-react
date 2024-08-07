@@ -1,5 +1,7 @@
 import React from 'react'
 import { Children } from 'react'
+import PropTypes from 'prop-types';
+import './BodySection.css';
 
 const BodySection = ({title, Children}) => {
   return (
@@ -11,7 +13,7 @@ const BodySection = ({title, Children}) => {
 }
 BodySection.PropTyes = {
     title: PropTypes.string.isRequired,
-    Children: PropTyes.node,
+    Children: PropTypes.node,
 };
 
 export default BodySection;
