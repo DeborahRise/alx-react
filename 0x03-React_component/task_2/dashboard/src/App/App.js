@@ -4,8 +4,9 @@ import './App.css';
 import Login from '../Login/Login';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import Notifications from '../Notifications';
+import Notifications from '../Notifications/Notifications';
 import CourseList from '../CourseList/CourseList'
+import { getLatestNotification } from '../utils';
 
   const listCourses = [
     {
@@ -56,7 +57,7 @@ class App extends React.Component {
   const { isLoggedIn, logOut } = this.props;
   return (
     <>
-    <Notifications displayDrawer={false} listNotifications={listNotifications} />
+    <Notifications displayDrawer={true} listNotifications={listNotifications} />
     <div className="App">
       <Header />
       {isLoggedIn ? <CourseList listCourses={listCourses}/> : <Login />}
@@ -66,7 +67,7 @@ class App extends React.Component {
   );
 }
 }
-App.PropTypes = {
+App.propTypes = {
   isLoggedIn: PropTypes.bool,
   logOut: PropTypes.func,
 };
