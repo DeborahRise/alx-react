@@ -5,6 +5,7 @@
   "dependencies": {
     "@testing-library/user-event": "^13.5.0",
     "@zarconontol/enzyme-adapter-react-18": "^0.7.3",
+    "aphrodite": "^2.4.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.8",
     "enzyme-to-json": "^3.6.2",
