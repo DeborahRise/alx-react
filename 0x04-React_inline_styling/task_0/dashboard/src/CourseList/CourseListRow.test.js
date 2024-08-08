@@ -30,4 +30,24 @@ describe('Testing the CourseListRow component', () => {
         expect(component.find("td").at(0).text()).toEqual("first cell");
         expect(component.find("td").at(1).text()).toEqual("second cell");
       });
+
+      it('renders a header row with correct styles and content', () => {
+        const wrapper = shallow(<CourseListRow isHeader={true} textFirstCell="Header" textSecondCell="Subheader" />);
+        expect(wrapper.find('tr').prop('style')).toEqual({ backgroundColor: '#deb5b545' });
+        expect(wrapper.find('th').at(0).text()).toBe('Header');
+        expect(wrapper.find('th').at(1).text()).toBe('Subheader');
+      });
+    
+      it('renders a regular row with correct styles and content', () => {
+        const wrapper = shallow(<CourseListRow isHeader={false} textFirstCell="Cell1" textSecondCell="Cell2" />);
+        expect(wrapper.find('tr').prop('style')).toEqual({ backgroundColor: '#f5f5f5ab' });
+        expect(wrapper.find('td').at(0).text()).toBe('Cell1');
+        expect(wrapper.find('td').at(1).text()).toBe('Cell2');
+      });
+    
+      it('renders a header row with only one cell when no second cell is provided', () => {
+        const wrapper = shallow(<CourseListRow isHeader={true} textFirstCell="Header" />);
+        expect(wrapper.find('th').prop('colSpan')).toBe('2');
+        expect(wrapper.find('th').text()).toBe('Header');
+      });
 })
