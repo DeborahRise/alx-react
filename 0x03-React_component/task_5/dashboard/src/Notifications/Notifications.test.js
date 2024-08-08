@@ -1,5 +1,5 @@
 import React from "react";
-import { shallow } from "enzyme";
+import { render, shallow } from "enzyme";
 import Notifications from "./Notifications";
 import NotificationItem from "./NotificationItem";
 
@@ -88,8 +88,8 @@ describe("Notification component tests", () => {
     
     const renderSpy = jest.spyOn(wrapper.instance(), 'render');
     wrapper.setProps({ listNotifications });
-
     expect(renderSpy).not.toHaveBeenCalled();
+    
   });
 
   it('rerenders when a longer listNotifications prop is passed', () => {
