@@ -16,9 +16,9 @@ const WithLogging = (WrappedComponent) => {
       return <WrappedComponent {...this.props} />;
     }
   };
-};
 
 // Set displayName for easier debugging and React DevTools integration
 WithLogging.displayName = `WithLogging(${WrappedComponent.displayName || WrappedComponent.name || 'Component'})`;
 
+};
 export default WithLogging;

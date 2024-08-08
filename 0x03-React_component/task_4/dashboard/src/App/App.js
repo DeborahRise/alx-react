@@ -9,6 +9,9 @@ import CourseList from '../CourseList/CourseList'
 import { getLatestNotification } from '../utils';
 import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 import BodySection from '../BodySection/BodySection';
+import WithLogging from '../HOC/WithLogging';
+
+  const NotificationsWithLogging = WithLogging(Notifications);
 
   const listCourses = [
     {
@@ -59,7 +62,7 @@ class App extends React.Component {
   const { isLoggedIn, logOut } = this.props;
   return (
     <>
-    <Notifications displayDrawer={true} listNotifications={listNotifications} />
+    <NotificationsWithLogging displayDrawer={true} listNotifications={listNotifications} />
     <div className="App">
       <Header />
       {isLoggedIn ? (
