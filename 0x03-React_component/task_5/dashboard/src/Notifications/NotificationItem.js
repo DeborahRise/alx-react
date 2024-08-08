@@ -10,6 +10,8 @@ const NotificationItem = ({ type, html, value, markAsRead, id }) => {
   return <li data-notification-type={type} onClick={() => markAsRead(id)}>{value}</li>;
 };
 
+
+
 NotificationItem.propTypes = {
   html: PropTypes.shape({
     __html: PropTypes.string.isRequired,
@@ -25,4 +27,12 @@ NotificationItem.defaultProps = {
   value: '',
 };
 
-export default NotificationItem;
+export default React.memo(NotificationItem, (prevProps, nextProps) => {
+  return (
+    prevProps.type === nextProps.type &&
+    prevProps.value === nextProps.value &&
+    prevProps.html?.__html === nextProps.html?.__html &&
+    prevProps.markAsRead === nextProps.markAsRead &&
+    prevProps.id === nextProps.id
+  );
+});
