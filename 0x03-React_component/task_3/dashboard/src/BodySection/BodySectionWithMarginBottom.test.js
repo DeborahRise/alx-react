@@ -1,14 +1,19 @@
 import React from "react";
 import BodySectionWithMarginBottom from './BodySectionWithMarginBottom';
 import { shallow } from "enzyme";
+import BodySection from "./BodySection";
 
 describe('BodySectionWithMarginBottom Component Test', () => {
-    it('renders without crashing', () => {
-        const wrapper = shallow(<BodySectionWithMarginBottom title='test title'
-            children='<p>test children node</p>'> </BodySectionWithMarginBottom>);
-
-        expect(wrapper.exists()).toBe(true);
-        expect(wrapper.contains("h2").find("test title")).toBe(true);
-        expect(wrapper.find("h2").html).toEqual("test title");
+    it('renders BodySection with correctly passed props', () => {
+        const props = {
+            title: "test title",
+            children: "<p>test children node</p>",
+        };
+        const wrapper = shallow(<BodySectionWithMarginBottom {...props} />);
+        const BS = wrapper.find('.bodySectionWithMargin');
+        expect(wrapper.find('.bodySectionWithMargin')).toHaveLength(1);
+        expect(wrapper.find(BodySection)).toHaveLength(1);
+        expect(wrapper.find(BodySection).prop('title')).toBe(props.title);
+        expect(wrapper.find(BodySection).prop('children')).toBe(props.children);
     });
 });
