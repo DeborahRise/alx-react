@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Notifications.css';
-import close_icon from './close-icon.png';
+import close_icon from '../close-icon.png';
 import { getLatestNotification } from '../utils';
 import NotificationItem from './NotificationItem';
 import PropTypes from 'prop-types';
@@ -12,6 +12,11 @@ class Notifications extends Component {
     this.markAsRead = this.markAsRead.bind(this);
   }
 
+   // Implementing shouldComponentUpdate to optimize re-rendering
+  shouldComponentUpdate(nextProps) {
+    // Only update if the new listNotifications has more items than the previous one
+    return nextProps.listNotifications.length > this.props.listNotifications.length;
+  }
   markAsRead(id) {
     console.log(`Notification ${id} has been marked as read`);
   }

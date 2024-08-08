@@ -3,10 +3,14 @@ import PropTypes from 'prop-types';
 
 const NotificationItem = ({ type, html, value, markAsRead, id }) => {
   if (html) {
-    return <li data-notification-type={type} dangerouslySetInnerHTML={{ __html: html }} onClick={() => markAsRead(id)}></li>;
+    return <li data-notification-type={type}
+    dangerouslySetInnerHTML={html ? { __html: html.__html } : undefined}
+    onClick={() => markAsRead(id)}></li>;
   }
   return <li data-notification-type={type} onClick={() => markAsRead(id)}>{value}</li>;
 };
+
+
 
 NotificationItem.propTypes = {
   html: PropTypes.shape({
@@ -23,4 +27,12 @@ NotificationItem.defaultProps = {
   value: '',
 };
 
-export default NotificationItem;
+export default React.memo(NotificationItem, (prevProps, nextProps) => {
+  return (
+    prevProps.type === nextProps.type &&
+    prevProps.value === nextProps.value &&
+    prevProps.html?.__html === nextProps.html?.__html &&
+    prevProps.markAsRead === nextProps.markAsRead &&
+    prevProps.id === nextProps.id
+  );
+});
