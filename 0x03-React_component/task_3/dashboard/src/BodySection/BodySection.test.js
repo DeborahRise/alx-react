@@ -11,8 +11,9 @@ describe('BodySection Component Test', () => {
     it('', () => {
         const wrapper = shallow();
 
-        expect(wrapper.find("h2")).lenght(1);
+        expect(wrapper.find("h2")).toHaveLenght(1);
         expect(wrapper.find("h2").text()).toBe("test title");
+        expect(wrapper.find("p")).toHaveLenght(1);
         expect(wrapper.find("p").text()).toBe("test children node");
     
     })
