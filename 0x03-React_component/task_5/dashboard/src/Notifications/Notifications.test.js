@@ -78,6 +78,36 @@ describe("Notification component tests", () => {
     anInstance.markAsRead(1);
     expect(ConsoleSpy).toBe('Notification 1 has been marked as read');
   });
+  it('does not rerender when the same listNotifications prop is passed', () => {
+    const listNotifications = [
+      { id: 1, type: 'default', value: 'New course available' },
+      { id: 2, type: 'urgent', value: 'New resume available' }
+    ];
 
+    const wrapper = shallow(<Notifications displayDrawer={true} listNotifications={listNotifications} />);
+    
+    const renderSpy = jest.spyOn(wrapper.instance(), 'render');
+    wrapper.setProps({ listNotifications });
 
+    expect(renderSpy).not.toHaveBeenCalled();
+  });
+
+  it('rerenders when a longer listNotifications prop is passed', () => {
+    const listNotifications = [
+      { id: 1, type: 'default', value: 'New course available' },
+      { id: 2, type: 'urgent', value: 'New resume available' }
+    ];
+
+    const longerListNotifications = [
+      ...listNotifications,
+      { id: 3, type: 'urgent', html: { __html: 'New data available' } }
+    ];
+
+    const wrapper = shallow(<Notifications displayDrawer={true} listNotifications={listNotifications} />);
+    
+    const renderSpy = jest.spyOn(wrapper.instance(), 'render');
+    wrapper.setProps({ listNotifications: longerListNotifications });
+
+    expect(renderSpy).toHaveBeenCalled();
+  });
 });
