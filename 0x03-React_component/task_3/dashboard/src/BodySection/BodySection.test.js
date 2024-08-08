@@ -4,7 +4,7 @@ import { shallow } from "enzyme";
 
 describe('BodySection Component Test', () => {
     it('renders without crashing', () => {
-        const wrapper = shallow(<BodySection title="test title"> children="<p>test children node</p>" </BodySection> );
+        const wrapper = shallow(<BodySection title="test title"> <p>test children node</p> </BodySection> );
 
         expect(wrapper.exists()).toBe(true);
     });
