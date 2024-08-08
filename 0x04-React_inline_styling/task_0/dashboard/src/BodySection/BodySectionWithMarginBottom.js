@@ -1,6 +1,5 @@
 import React from 'react';
 import BodySection from './BodySection';
-import { Children } from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, css } from 'aphrodite';
 
@@ -20,6 +19,6 @@ const BodySectionWithMarginBottom = (props) => {
 
 BodySectionWithMarginBottom.propTypes = {
     title: PropTypes.string.isRequired,
-    Children: PropTypes.node,
+    children: PropTypes.node,
 }
 export default BodySectionWithMarginBottom
