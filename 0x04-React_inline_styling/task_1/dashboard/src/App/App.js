@@ -12,6 +12,15 @@ import BodySection from '../BodySection/BodySection';
 import WithLogging from '../HOC/WithLogging';
 
 const styles = StyleSheet.create({
+  body: {
+    fontFamily: 'Arial, sans-serif',
+    padding: '20px',
+  },
+  footer: {
+    borderTop: '4px solid rgb(220, 34, 34)',
+    padding: '10px',
+    textAlign: 'center',
+  },
   App: {
     maxWidth: '100vw',
     minHeight: '100vh',
@@ -63,7 +72,8 @@ class App extends Component {
         <NotificationsWithLogging displayDrawer={true} listNotifications={listNotifications} />
         <div className={css(styles.App)}>
           <Header />
-          {isLoggedIn ? (
+          <div className={css(styles.body)}>
+            {isLoggedIn ? (
             <BodySectionWithMarginBottom title="Course list">
               <CourseList listCourses={listCourses} />
             </BodySectionWithMarginBottom>
@@ -73,9 +83,13 @@ class App extends Component {
             </BodySectionWithMarginBottom>
           )}
           <BodySection title="News from the School">
-            <p>Here is some random text for the news section of the school.</p>
+            <p className={css(styles.App)}>Here is some random text for the news section of the school.</p>
           </BodySection>
-          <Footer />
+          </div>
+          <div className={css(styles.footer)}>
+          <Footer />  
+          </div>
+          
         </div>
       </>
     );

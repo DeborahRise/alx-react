@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
   AppBody: {
     height: '50vh',
     borderBottom: '4px solid rgb(220, 34, 34)',
+    margin: '10px',
   },
 });
 
