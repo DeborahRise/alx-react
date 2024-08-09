@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
 const BodySectionWithMarginBottom = (props) => {
   return (
     <div className={css(styles.bodySectionWithMargin)}>
-        <BodySection {...props}/>
+        <BodySection className={css(styles.bodySectionWithMargin)} {...props}/>
     </div>
   )
 }

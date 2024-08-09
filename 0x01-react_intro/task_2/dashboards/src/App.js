@@ -11,9 +11,12 @@ function App() {
       </header>
       <body className='App-body'>
         <p>Login to access the full dashboard</p>
-        <label>Email:</label>
-        <input type="text">
-        </input>
+        <label 
+        >Email:
+        <input 
+         type="email"/>
+         </label>
+  
         <label>Password:</label>
         <input type="password">
         </input>
