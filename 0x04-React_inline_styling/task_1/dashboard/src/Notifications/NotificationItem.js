@@ -1,13 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { StyleSheet, css } from 'aphrodite';
+
+const styles = StyleSheet.create({
+  defaultPriority: {
+    color: 'blue',
+  },
+  urgentPriority: {
+    color: 'red',
+  },
+})
 
 const NotificationItem = ({ type, html, value, markAsRead, id }) => {
   if (html) {
-    return <li data-notification-type={type}
+    return <li className={type==='default' ? css(styles.defaultPriority) : css(styles.urgentPriority)} data-notification-type={type}
     dangerouslySetInnerHTML={html ? { __html: html.__html } : undefined}
     onClick={() => markAsRead(id)}></li>;
   }
-  return <li data-notification-type={type} onClick={() => markAsRead(id)}>{value}</li>;
+  return <li className={type==='default' ? css(styles.defaultPriority) : css(styles.urgentPriority)} data-notification-type={type} onClick={() => markAsRead(id)}>{value}</li>;
 };
 
 

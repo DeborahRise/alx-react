@@ -1,11 +1,29 @@
 import React, { Component } from 'react';
-import './Notifications.css';
 import close_icon from '../close-icon.png';
 import { getLatestNotification } from '../utils';
 import NotificationItem from './NotificationItem';
 import PropTypes from 'prop-types';
 import NotificationItemShape from './NotificationItemShape';
+import { StyleSheet, css } from 'aphrodite';
 
+const styles = StyleSheet.create({
+  Notifications: {
+    padding: '1em',
+    border: '2px dashed red',
+    position: 'absolute',
+    top: '10px',
+    width: '95vw',
+  },
+  menuItem: {
+    textAlign: 'right',
+  },
+  defaultPriority: {
+    color: 'blue',
+  },
+  urgentPriority: {
+    color: 'red',
+  },
+});
 class Notifications extends Component {
   constructor(props) {
     super(props);
@@ -25,11 +43,11 @@ class Notifications extends Component {
     const { displayDrawer, listNotifications } = this.props;
     return (
       <>
-        <div className='menuItem'>
+        <div className={css(styles.menuItem)}>
           Your notifications
         </div>
         {displayDrawer && 
-        <div className='Notifications'>
+        <div className={css(styles.Notifications)}>
             <button
             onClick={() => console.log('Close button has been clicked')}
             style={{position:'absolute', top:0, right:0}}
