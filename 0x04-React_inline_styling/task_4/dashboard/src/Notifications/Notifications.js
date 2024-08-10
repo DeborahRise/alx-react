@@ -5,9 +5,26 @@ import PropTypes from 'prop-types';
 import NotificationItemShape from './NotificationItemShape';
 import { StyleSheet, css } from 'aphrodite';
 
+const opacityKeyframes = {
+  '0%': { opacity: 0.5 },
+  '100%': { opacity: 1 },
+};
+
+const bounceKeyframes = {
+  '0%': { transform: 'translateY(0px)' },
+  '50%': { transform: 'translateY(-5px)' },
+  '100%': { transform: 'translateY(5px)' },
+};
+
 const styles = StyleSheet.create({
   menuItem: {
     textAlign: 'right',
+    cursor: 'pointer',
+    ':hover': {
+      animationName: [opacityKeyframes, bounceKeyframes],
+      animationDuration: '1s, 0.5s',
+      animationIterationCount: '3, 3',
+    }
   },
   Notifications: {
     padding: '0', // No padding
@@ -16,7 +33,7 @@ const styles = StyleSheet.create({
     top: '0',
     left: '0',
     right: '0',
-    width: '100vw',
+    width: '50vw',
     backgroundColor: 'white',
     zIndex: '1000', // Ensure it stays on top of other elements
     fontSize: '20px', // Font size of 20px

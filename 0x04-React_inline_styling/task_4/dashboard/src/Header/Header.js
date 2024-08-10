@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     boaderBottom: '4px solid rgb(220, 34, 34)',
     color: 'rgb(230, 34, 34)',
     alignItems: 'center',
-    marginTop: '10rem',
+    marginTop: '12rem',
   },
   AppHeaderImg: {
     height: '150px',
