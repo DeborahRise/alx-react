@@ -1,7 +1,8 @@
 import { configure } from "enzyme";
 import Adapter from "@zarconontol/enzyme-adapter-react-18";
+import { TextEncoder, TextDecoder } from "util";
 
-import '@testing-library/jest-dom/extend-expect';
-
+global.TextEncoder = TextEncoder;
+global.TextDecoder = TextDecoder;
 
 configure({ adapter: new Adapter() });

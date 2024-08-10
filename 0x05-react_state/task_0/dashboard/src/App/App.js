@@ -46,6 +46,11 @@ const listNotifications = [
 class App extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      displayDrawer:false,
+    }
+    this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
+    this.handleHideDrawer = this.handleHideDrawer.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
@@ -57,6 +62,14 @@ class App extends Component {
     window.removeEventListener('keydown', this.handleKeyDown);
   }
 
+  handleDisplayDrawer(){
+    this.setState({ displayDrawer: true});
+  }
+
+  handleHideDrawer(){
+    this.setState({ displayDrawer: false});
+  }
+  
   handleKeyDown(event) {
     const { logOut } = this.props;
     if (event.ctrlKey && event.key === 'h') {
@@ -67,9 +80,13 @@ class App extends Component {
 
   render() {
     const { isLoggedIn, logOut } = this.props;
+    const { displayDrawer } = this.state;
     return (
       <>
-        <NotificationsWithLogging displayDrawer={true} listNotifications={listNotifications} />
+        <NotificationsWithLogging displayDrawer={displayDrawer}
+        handleDisplayDrawer={this.handleDisplayDrawer}
+        handleHideDrawer={this.handleHideDrawer}
+        listNotifications={listNotifications} />
         <div className={css(styles.App)}>
           <Header />
           <div className={css(styles.body)}>
