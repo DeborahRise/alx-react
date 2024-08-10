@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   },
   App: {
     maxWidth: '100vw',
-    minHeight: '100vh',
+    minHeight: '20vh',
     display: 'flex',
     flexDirection: 'column',
   },
@@ -102,7 +102,7 @@ App.propTypes = {
 };
 
 App.defaultProps = {
-  isLoggedIn: true,
+  isLoggedIn: false,
   logOut: () => {},
 };
 

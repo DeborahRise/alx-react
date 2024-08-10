@@ -9,18 +9,39 @@ const styles = StyleSheet.create({
   urgentPriority: {
     color: 'red',
   },
-})
+  notificationItem: {
+    width: '100%',            // Full screen width
+    borderBottom: '1px solid black', // Black border at the bottom
+    fontSize: '20px',          // Font size of 20px
+    padding: '10px 8px',       // Padding of 10px 8px
+    boxSizing: 'border-box',   // Ensure padding doesn't affect width
+  },
+});
 
 const NotificationItem = ({ type, html, value, markAsRead, id }) => {
+  const priorityStyle = type === 'default' ? styles.defaultPriority : styles.urgentPriority;
+
   if (html) {
-    return <li className={type==='default' ? css(styles.defaultPriority) : css(styles.urgentPriority)} data-notification-type={type}
-    dangerouslySetInnerHTML={html ? { __html: html.__html } : undefined}
-    onClick={() => markAsRead(id)}></li>;
+    return (
+      <li
+        className={css(styles.notificationItem, priorityStyle)}
+        data-notification-type={type}
+        dangerouslySetInnerHTML={html ? { __html: html.__html } : undefined}
+        onClick={() => markAsRead(id)}
+      ></li>
+    );
   }
-  return <li className={type==='default' ? css(styles.defaultPriority) : css(styles.urgentPriority)} data-notification-type={type} onClick={() => markAsRead(id)}>{value}</li>;
+
+  return (
+    <li
+      className={css(styles.notificationItem, priorityStyle)}
+      data-notification-type={type}
+      onClick={() => markAsRead(id)}
+    >
+      {value}
+    </li>
+  );
 };
-
-
 
 NotificationItem.propTypes = {
   html: PropTypes.shape({
@@ -29,7 +50,7 @@ NotificationItem.propTypes = {
   value: PropTypes.string,
   type: PropTypes.string.isRequired,
   markAsRead: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired
+  id: PropTypes.number.isRequired,
 };
 
 NotificationItem.defaultProps = {
