@@ -47,8 +47,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      displayDrawer:false,
-    }
+      displayDrawer:false
+    };
     this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
     this.handleHideDrawer = this.handleHideDrawer.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
@@ -63,6 +63,7 @@ class App extends Component {
   }
 
   handleDisplayDrawer(){
+    
     this.setState({ displayDrawer: true});
   }
 

@@ -72,4 +72,23 @@ describe("App tests", () => {
       expect(component.find(CourseList).exists()).toBe(true);
     });
   });
+  // react state test case
+  it('default state for displayDrawer is false', () => {
+    const wrapper = shallow(<App />);
+    expect(wrapper.state().displayDrawer).toBe(false);
+  });
+  
+  it('after calling handleDisplayDrawer, state is true', () => {
+    const wrapper = shallow(<App />);
+    wrapper.instance().handleDisplayDrawer();
+    expect(wrapper.state().displayDrawer).toBe(true);
+  });
+  
+  it('after calling handleHideDrawer, state is false', () => {
+    const wrapper = shallow(<App />);
+    wrapper.instance().handleDisplayDrawer();
+    wrapper.instance().handleHideDrawer();
+    expect(wrapper.state().displayDrawer).toBe(false);
+  });
+  
 });
