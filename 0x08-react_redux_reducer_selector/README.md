@@ -9,3 +9,5 @@ Why mutations should not happen within a reducer
 The use of Immutable within the reducer
 The use of Normalizr within the app
 Selectors: what they are and when to use them
+
+"Redux"
